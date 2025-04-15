@@ -1,0 +1,72 @@
+.clockContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #111;
+  border-radius: 15px;
+  /* 기존 그림자 대신 더 밝고 화려한 그림자 효과 적용 */
+  box-shadow: 
+    0 0 15px rgba(38, 255, 0, 0.2),
+    0 0 30px rgba(140, 255, 0, 0.1); /* 아래쪽으로 약간의 그림자 */
+  width: 100%;
+  max-width: 800px; /* 최대 너비 제한 */
+  overflow-x: auto; /* 필요시 가로 스크롤 */
+}
+
+.clockDigits {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: nowrap; /* 줄바꿈 방지 */
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.colon {
+  font-size: clamp(30px, 8vw, 60px); /* 반응형 폰트 크기 */
+  color: #328a48;
+  margin: 0 clamp(2px, 1vw, 5px);
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(24, 182, 29, 0.7);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* 미디어 쿼리 추가 */
+@media (max-width: 768px) {
+  .clockContainer {
+    padding: 15px;
+    /* 작은 화면에서는 그림자 효과 약간 감소 */
+    box-shadow: 
+      0 0 10px rgba(255, 0, 0, 0.2),
+      0 5px 15px rgba(0, 0, 0, 0.4);
+  }
+  
+  .colon {
+    margin: 0 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .clockContainer {
+    padding: 10px;
+    /* 매우 작은 화면에서는 그림자 더 감소 */
+    box-shadow: 
+      0 0 5px rgba(255, 0, 0, 0.2),
+      0 3px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .colon {
+    margin: 0 1px;
+  }
+  
+  .clockDigits {
+    padding: 5px;
+  }
+}
